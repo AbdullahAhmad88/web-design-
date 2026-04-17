@@ -1,0 +1,255 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ==========================
+   BACKGROUND
+========================== */
+
+.bg-gradient {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,255,200,0.08), transparent);
+  z-index: 0;
+  pointer-events: none;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* ==========================
+   LAYER FIX
+========================== */
+
+.hero,
+.section,
+.footer {
+  position: relative;
+  z-index: 5;
+}
+
+/* ==========================
+   NAVBAR (FIXED 🔥)
+========================== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(20px);
+
+  z-index: 9999; /* 🔥 FIX */
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00ffcc;
+  opacity: 1;
+}
+
+/* MENU BUTTON */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10000; /* 🔥 ensure clickable */
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+/* TITLE */
+h1 {
+  font-size: 60px;
+  background: linear-gradient(90deg,#00ffcc,#00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  opacity: 0.7;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.primary {
+  background: linear-gradient(45deg,#00ffcc,#00bfff);
+  color: black;
+}
+
+.secondary {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* ==========================
+   SECTIONS
+========================== */
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==========================
+   BOX (FIXED SPACING)
+========================== */
+
+.box {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(35px);
+  padding: 60px 40px;
+  border-radius: 25px;
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 0 60px rgba(0,255,200,0.2),
+    inset 0 0 30px rgba(255,255,255,0.05);
+
+  transition: 0.4s;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* PREVENT OVERLAP */
+.box * {
+  position: relative;
+  z-index: 2;
+}
+
+.price {
+  font-size: 50px;
+  color: #00ffcc;
+  margin: 10px 0;
+}
+
+.highlight {
+  margin-bottom: 10px;
+}
+
+.box .btn {
+  margin-top: 10px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* ==========================
+   MOBILE FIX (IMPORTANT 🔥)
+========================== */
+
+@media(max-width:768px){
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    width: 70%;
+
+    background: rgba(0,0,0,0.95);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    transition: 0.3s;
+
+    z-index: 9998; /* 🔥 below navbar */
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+}
